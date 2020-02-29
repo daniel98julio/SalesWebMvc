@@ -59,8 +59,14 @@ namespace SalesWebMvc.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id) {
-            await _sellerService.RemoveAsync(id);
-            return RedirectToAction(nameof(Index));
+            try {
+                await _sellerService.RemoveAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (IntegrityException) {
+                return RedirectToAction(nameof(Error), new { message = "Este Vendedor possuí vendas, ele não pode ser excluído." });
+            }
+
         }
 
         public async Task<IActionResult> Details(int? id) {
