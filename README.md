@@ -1,4 +1,4 @@
-# AlugaHouse
+# SalesWebMvc
 ## Tecnologias utilizadas:
 Para desenvolver a aplicação foram usadas as seguintes tecnologias:
 ### Back-End:
